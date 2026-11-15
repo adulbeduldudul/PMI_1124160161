@@ -49,3 +49,38 @@ class ProfileHeader extends StatelessWidget {
     );
   }
 }
+class ProfileHeaderWidget extends StatelessWidget {
+  final String imagePath;
+  final String name;
+  final String nim;
+  final String studyProgram;
+
+  const ProfileHeaderWidget({
+    super.key,
+    required this.imagePath,
+    required this.name,
+    required this.nim,
+    required this.studyProgram,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundImage: AssetImage(imagePath),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          name,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 4),
+        Text(nim, style: const TextStyle(fontSize: 16)),
+        const SizedBox(height: 4),
+        Text(studyProgram, style: const TextStyle(fontSize: 16)),
+      ],
+    );
+  }
+}
