@@ -91,6 +91,14 @@ class ProfileHeaderWidget extends StatelessWidget {
         Text(nim, style: const TextStyle(fontSize: 16)),
         const SizedBox(height: 4),
         Text(studyProgram, style: const TextStyle(fontSize: 16)),
+              KartuCatatan(
+                judul: 'Catatan Kuliah',
+                isiPesan: 'Mempelajari cara membuat custom widget di Flutter.',
+              ),
+              KartuCatatan(
+                judul: 'Target Belajar',
+                isiPesan: 'Menguasai layouting dan navigasi antar halaman.',
+              ),
       ],
     );
   }
