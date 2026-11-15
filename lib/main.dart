@@ -5,10 +5,28 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const new({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      title: 'Aplikasi Flutter Saya',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Halaman Utama'),
+        ),
+        body: const Center(
+          child: Text(
+            'Halo world hehe!',
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      ),
+    );
   }
 }
+
+
