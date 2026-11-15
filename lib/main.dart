@@ -37,25 +37,29 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              ProfileHeaderWidget(
-                imagePath: "lib/assets/saburo.png",
-                name: 'Sayyid abdul wasye',
-                nim: 'NIM: 1124160161',
-                studyProgram: 'Program Studi: Software Engineering',
-              ),
-              SizedBox(height: 24),
-            ],
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center, // Supaya benar-benar pas di tengah secara vertikal
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                ProfileHeaderWidget(
+                  imagePath: "lib/assets/saburo.png",
+                  name: 'Sayyid abdul wasye',
+                  nim: 'NIM: 1124160161',
+                  studyProgram: 'Program Studi: Software Engineering',
+                ),
+                SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
 class ProfileHeaderWidget extends StatelessWidget {
   final String imagePath;
   final String name;
