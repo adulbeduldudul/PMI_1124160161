@@ -27,7 +27,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sayyid Abdul Wasye'),
+        title: const Text('Profil Sayid'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -37,36 +37,161 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, // Supaya benar-benar pas di tengah secara vertikal
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                ProfileHeaderWidget(
-                  imagePath: "lib/assets/saburo.png",
-                  name: 'Sayyid abdul wasye',
-                  nim: 'NIM: 1124160161',
-                  studyProgram: 'Program Studi: Software Engineering',
-                ),
-                SizedBox(height: 24),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              // Menggunakan class terpisah untuk Header Foto & Identitas
+              ProfileHeader(
+                imagePath: 'lib/assets/saburo.png',
+                name: 'Sayyid abdul wasye',
+                nim: 'NIM: 1124160161',
+                studyProgram: 'Program Studi: Software Engineering',
+              ),
+              SizedBox(height: 24),
+
+              // Menggunakan class terpisah untuk Card Informasi Kontak
+              InfoCard(
+                title: 'Informasi Kontak',
+                children: [
+                  InfoTile(
+                    icon: Icons.email_outlined,
+                    label: 'Email',
+                    value: 'Sayyidwasye@gmail.com',
+                  ),
+                  InfoTile(
+                    icon: Icons.phone_outlined,
+                    label: 'Nomor HP',
+                    value: '+62 881 9972581',
+                  ),
+                  InfoTile(
+                    icon: Icons.class_outlined,
+                    label: 'Kelas',
+                    value: 'TI 24 SH SE',
+                  ),
+                  InfoTile(
+                    icon: Icons.code,
+                    label: 'Akun GitHub',
+                    value: 'github.com/sayyidabdul.com',
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+
+              InfoCard(
+                title: 'Keahlian & Hobi',
+                children: [
+                  InfoTile(
+                    icon: Icons.computer,
+                    label: 'Pemrograman',
+                    value: 'Python, Dart, Flutter',
+                  ),
+                  InfoTile(
+                    icon: Icons.data_array,
+                    label: 'Data Science',
+                    value: 'Pandas, NumPy, EDA',
+                  ),
+                  InfoTile(
+                    icon: Icons.sports_esports_outlined,
+                    label: 'Hobi',
+                    value: 'Reverse Engineering & Gaming',
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              InfoCard(
+                title: 'Makanan kesukaan',
+                children: [
+                  InfoTile(
+                    icon: Icons.food_bank_outlined,
+                    label: 'Top makanan padang',
+                    value: 'rendang, sate padang, tunjang',
+                  ),
+                ],
+              ),
+            ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Terima kasih telah melihat profil saya'),
+            ),
+          );
+        },
+        child: const Icon(Icons.thumb_up),
+      ),
+    );
+  }
+}
+class InfoCard extends StatelessWidget {
+  const InfoCard({
+    super.key,
+    required this.title,
+    required this.children,
+  });
+
+  final String title;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              child: Text(
+                title,
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const Divider(),
+            ...children, // Memuat daftar InfoTile ke dalam Card
+          ],
         ),
       ),
     );
   }
 }
 
-class ProfileHeaderWidget extends StatelessWidget {
-  final String imagePath;
-  final String name;
-  final String nim;
-  final String studyProgram;
+class InfoTile extends StatelessWidget {
+  const InfoTile({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
-  const ProfileHeaderWidget({
+  final IconData icon;
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(label),
+      subtitle: Text(value),
+    );
+  }
+}
+class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({
     super.key,
     required this.imagePath,
     required this.name,
@@ -74,31 +199,45 @@ class ProfileHeaderWidget extends StatelessWidget {
     required this.studyProgram,
   });
 
+  final String imagePath;
+  final String name;
+  final String nim;
+  final String studyProgram;
+
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: AssetImage(imagePath),
+        Center(
+          child: CircleAvatar(
+            radius: 80,
+            backgroundImage: AssetImage(imagePath),
+          ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Text(
           name,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 6),
+        Text(
+          nim,
+          style: textTheme.bodyMedium,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 4),
-        Text(nim, style: const TextStyle(fontSize: 16)),
-        const SizedBox(height: 4),
-        Text(studyProgram, style: const TextStyle(fontSize: 16)),
-              KartuCatatan(
-                judul: 'Catatan Kuliah',
-                isiPesan: 'Mempelajari cara membuat custom widget di Flutter.',
-              ),
-              KartuCatatan(
-                judul: 'Target Belajar',
-                isiPesan: 'Menguasai layouting dan navigasi antar halaman.',
-              ),
+        Text(
+          studyProgram,
+          style: textTheme.bodyMedium?.copyWith(
+            color: Colors.grey,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
