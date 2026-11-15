@@ -15,18 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Halaman Utama'),
-          centerTitle: true,
-        ),
-        body: const Center(
-          child: Text(
-            'Halo world!',
-            style: TextStyle(fontSize: 16),
-          ),
-        ),
-      ),
+      // Arahkan 'home' langsung ke halaman profil kita
+      home: const ProfileHeader(), 
     );
   }
 }
