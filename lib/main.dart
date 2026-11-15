@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Aplikasi Flutter Saya',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -17,10 +18,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Halaman Utama'),
+          centerTitle: true,
         ),
         body: const Center(
           child: Text(
-            'Halo world hehe!',
+            'Halo world!',
             style: TextStyle(fontSize: 16),
           ),
         ),
