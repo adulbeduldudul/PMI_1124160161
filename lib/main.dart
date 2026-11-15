@@ -16,25 +16,42 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // Arahkan 'home' langsung ke halaman profil kita
-      home: const ProfileHeader(), 
+      home: const ProfilePage(), 
     );
   }
 }
-class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Hapus 'const' di sini
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Sayyid Abdul Wasye'),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.info_outline), // Diubah jadi Icon dan Icons
+            icon: const Icon(Icons.info_outline),
             onPressed: () {},
           ),
         ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              ProfileHeaderWidget(
+                imagePath: "lib/assets/saburo.png",
+                name: 'Sayyid abdul wasye',
+                nim: 'NIM: 1124160161',
+                studyProgram: 'Program Studi: Software Engineering',
+              ),
+              SizedBox(height: 24),
+            ],
+          ),
+        ),
       ),
     );
   }
