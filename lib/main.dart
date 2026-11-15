@@ -30,5 +30,22 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({super.key});
 
-
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( // Hapus 'const' di sini
+      appBar: AppBar(
+        title: const Text('Sayyid Abdul Wasye'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline), // Diubah jadi Icon dan Icons
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
