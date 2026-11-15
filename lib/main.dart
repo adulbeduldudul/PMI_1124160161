@@ -95,3 +95,36 @@ class ProfileHeaderWidget extends StatelessWidget {
     );
   }
 }
+class KartuCatatan extends StatelessWidget {
+  const KartuCatatan({
+    super.key,
+    required this.judul,
+    required this.isiPesan,
+  });
+  final String judul;
+  final String isiPesan;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 3,
+      margin: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              judul,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+}
