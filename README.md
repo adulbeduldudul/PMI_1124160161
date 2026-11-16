@@ -26,8 +26,8 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini di komputer lokal kam
 
 Clone repository ini
 
-git clone https://github.com/username-kamu/nama-repo.git
-
+git clone https://github.com/adulbeduldudul/PMI_Soal2_1124160161.git
+------------
 
 Masuk ke direktori proyek
 
