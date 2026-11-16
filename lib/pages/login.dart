@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profile.dart'; 
+import '../pages/main_home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
     if (username == 'sayyid' && password == '12345') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ProfilePage()),
+        MaterialPageRoute(builder: (context) => const MainPage()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Halaman Login'),
+        title: const Text('Page Login'),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -71,9 +71,9 @@ class _LoginPageState extends State<LoginPage> {
                 const Icon(
                   Icons.lock_person_outlined,
                   size: 80,
-                  color: Colors.deepPurple,
+                  color: Color.fromARGB(255, 29, 7, 65),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 90),
                 const Text(
                   'Selamat Datang',
                   textAlign: TextAlign.center,

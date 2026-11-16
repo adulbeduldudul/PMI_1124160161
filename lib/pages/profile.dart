@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
                   InfoTile(
                     icon: Icons.class_outlined,
                     label: 'Kelas',
-                    value: 'TI 24 SH SE',
+                    value: 'TI 24 M SE',
                   ),
                   InfoTile(
                     icon: Icons.code,
