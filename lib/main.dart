@@ -1,5 +1,5 @@
   import 'package:flutter/material.dart';
-  import 'pages/profile.dart';
+  import 'pages/login.dart';
 
   void main() {
     runApp(const MyApp());
@@ -28,7 +28,7 @@
           ),
         ),
         themeMode: ThemeMode.system,
-        home: const ProfilePage(),
+        home: const LoginPage(),
       );
     }
   }
